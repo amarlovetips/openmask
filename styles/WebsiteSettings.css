@@ -1,0 +1,150 @@
+.website-settings {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.website-settings h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.settings-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.settings-section h2 {
+  margin-bottom: 1.5rem;
+  color: #444;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="url"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.logo-preview {
+  margin-bottom: 1.5rem;
+  border: 2px dashed #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.logo-preview img {
+  max-width: 200px;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.color-input-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.color-input-wrapper input[type="color"] {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.color-input-wrapper input[type="text"] {
+  width: 120px;
+}
+
+.file-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .website-settings {
+    padding: 1rem;
+  }
+
+  .settings-section {
+    padding: 1.5rem;
+  }
+}
+
+.logo-section {
+  margin-bottom: 2rem;
+}
+
+.logo-section h3 {
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.logo-preview.mobile {
+  max-width: 120px;
+  margin: 0 auto 1.5rem;
+  background: #f8f9fa;
+}
+
+.logo-preview.mobile img {
+  max-height: 40px;
+}
+
+/* Add a mobile preview frame */
+.mobile-preview {
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  padding: 10px;
+  background: #f8f9fa;
+  width: fit-content;
+  margin: 1rem 0;
+} 
