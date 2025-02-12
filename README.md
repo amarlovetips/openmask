@@ -18,9 +18,8 @@ Create a `.env.local` file with:
 
 ```env
 # Admin Credentials
-ADMIN_USERNAME=your_admin_username
-ADMIN_PASSWORD=your_admin_password
-JWT_SECRET=your_jwt_secret
+NEXT_PUBLIC_ADMIN_USERNAME=your_admin_username
+NEXT_PUBLIC_ADMIN_PASSWORD=your_admin_password
 
 # Public variables
 NEXT_PUBLIC_INFURA_ID=your_infura_id

@@ -16,26 +16,17 @@ export default function AdminLogin() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/api/admin/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        localStorage.setItem('adminToken', data.token);
+      // Simple local authentication
+      if (username === process.env.NEXT_PUBLIC_ADMIN_USERNAME && 
+          password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+        localStorage.setItem('adminToken', 'authenticated');
         setIsAuthenticated(true);
         router.push('/joynobiadmin');
       } else {
-        setError(data.message || 'Invalid credentials');
+        setError('Invalid credentials');
       }
     } catch (error) {
       setError('An error occurred. Please try again.');
-      console.error('Login error:', error);
     } finally {
       setIsLoading(false);
     }
