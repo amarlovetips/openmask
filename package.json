@@ -18,6 +18,7 @@
     "@web3-react/core": "^8.2.3",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.13",
+    "cookie": "^0.4.2",
     "dotenv": "^16.4.7",
     "ethers": "^6.9.0",
     "framer-motion": "^11.18.2",
@@ -29,9 +30,9 @@
   "devDependencies": {
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.42",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
-    "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1"
   },
   "eslintConfig": {

@@ -1,4 +1,10 @@
-import { statsService } from '../../../services/StatsService';
+// Mock stats service
+const mockStats = {
+  users: 1234,
+  nfts: 567,
+  transactions: 890,
+  revenue: '123.45 ETH'
+};
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -6,10 +12,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const stats = statsService.getStats();
-    res.status(200).json(stats);
+    // Check for admin session
+    const adminSession = req.cookies.adminSession;
+    if (!adminSession) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    // Return mock stats
+    res.status(200).json(mockStats);
   } catch (error) {
-    console.error('Error fetching stats:', error);
+    console.error('Stats error:', error);
     res.status(500).json({ message: 'Error fetching stats' });
   }
 } 

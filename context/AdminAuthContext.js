@@ -1,28 +1,50 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const AdminAuthContext = createContext();
 
 export function AdminAuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    setMounted(true);
-    const token = localStorage.getItem('adminToken');
-    setIsAuthenticated(!!token);
+    // Check for admin session on mount
+    const checkAuth = async () => {
+      const adminSession = document.cookie.includes('adminSession=true');
+      setIsAuthenticated(adminSession);
+    };
+
+    checkAuth();
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem('adminToken');
-    setIsAuthenticated(false);
+  const login = async (username, password) => {
+    try {
+      const response = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setIsAuthenticated(true);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Login error:', error);
+      return false;
+    }
   };
 
-  if (!mounted) {
-    return null;
-  }
+  const logout = () => {
+    document.cookie = 'adminSession=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+    setIsAuthenticated(false);
+    router.push('/joynobiadmin/login');
+  };
 
   return (
-    <AdminAuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, logout }}>
+    <AdminAuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AdminAuthContext.Provider>
   );
