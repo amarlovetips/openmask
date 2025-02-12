@@ -1,5 +1,3 @@
-import { sign } from 'jsonwebtoken';
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -8,15 +6,9 @@ export default async function handler(req, res) {
   const { username, password } = req.body;
 
   try {
-    if (username === process.env.ADMIN_USERNAME && 
-        password === process.env.ADMIN_PASSWORD) {
-      const token = sign(
-        { username, role: 'admin' },
-        process.env.JWT_SECRET,
-        { expiresIn: '24h' }
-      );
-
-      res.status(200).json({ success: true, token });
+    if (username === process.env.NEXT_PUBLIC_ADMIN_USERNAME && 
+        password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+      res.status(200).json({ success: true });
     } else {
       res.status(401).json({ 
         success: false, 

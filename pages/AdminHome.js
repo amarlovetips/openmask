@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import styles from '../styles/components/AdminHome.module.css';
 
 function AdminHome() {
@@ -16,7 +16,7 @@ function AdminHome() {
     memoryUsage: '2.4 GB'
   });
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const quickLinks = [
     { title: 'Dashboard', path: '/joynobiadmin/dashboard', icon: '📊' },
@@ -86,7 +86,7 @@ function AdminHome() {
             <button
               key={index}
               className="quick-link-card"
-              onClick={() => navigate(link.path)}
+              onClick={() => router.push(link.path)}
             >
               <span className="link-icon">{link.icon}</span>
               <span className="link-title">{link.title}</span>

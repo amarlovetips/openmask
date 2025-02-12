@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import styles from '../styles/components/AdminLogin.module.css';
 
@@ -8,12 +8,12 @@ function AdminLogin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { loginAdmin } = useAdminAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (loginAdmin(username, password)) {
-      navigate('/joynobiadmin');
+      router.push('/joynobiadmin');
     } else {
       setError('Invalid credentials');
     }
