@@ -1,4 +1,91 @@
 /* Copy styles from AdminHome.css */
 .container {
   /* your styles */
+}
+
+.adminHome {
+  padding: 20px;
+}
+
+.adminHeader {
+  margin-bottom: 30px;
+}
+
+.currentTime {
+  color: #666;
+}
+
+.quickStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.statCard {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.systemMetrics {
+  margin-bottom: 30px;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.metricItem {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.metricLabel {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.metricValue {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.quickLinks {
+  margin-top: 30px;
+}
+
+.linksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.quickLinkCard {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.quickLinkCard:hover {
+  transform: translateY(-2px);
+}
+
+.linkIcon {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.linkTitle {
+  font-weight: 500;
 } 
