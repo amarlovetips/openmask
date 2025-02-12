@@ -6,22 +6,19 @@ const mockStats = {
   revenue: '123.45 ETH'
 };
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
   try {
-    // Check for admin session
-    const adminSession = req.cookies.adminSession;
-    if (!adminSession) {
+    if (!req.cookies.adminSession) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    // Return mock stats
-    res.status(200).json(mockStats);
+    return res.status(200).json(mockStats);
   } catch (error) {
     console.error('Stats error:', error);
-    res.status(500).json({ message: 'Error fetching stats' });
+    return res.status(500).json({ message: 'Error fetching stats' });
   }
 } 

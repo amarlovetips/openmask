@@ -8,19 +8,11 @@ export default async function handler(req, res) {
   const { username, password } = req.body;
 
   try {
-    // Simple credential check
     if (username === process.env.NEXT_PUBLIC_ADMIN_USERNAME && 
         password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       
-      // Set a simple session cookie
-      res.setHeader('Set-Cookie', serialize('adminSession', 'true', {
-        path: '/',
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        maxAge: 60 * 60 * 24 // 24 hours
-      }));
-
+      // Set simple cookie
+      res.setHeader('Set-Cookie', 'adminSession=true; Path=/; HttpOnly; SameSite=Strict');
       return res.status(200).json({ success: true });
     }
 
