@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../context/AdminAuthContext';
-import './AdminLogin.css';
+import styles from '../styles/components/AdminLogin.module.css';
 
 function AdminLogin() {
   const [username, setUsername] = useState('');

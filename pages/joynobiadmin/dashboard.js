@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import AdminLayout from '../../components/AdminLayout';
 import { FaWallet, FaKey, FaChartLine, FaBook } from 'react-icons/fa';
+import styles from '../../styles/components/AdminDashboard.module.css';
 
 export default function Dashboard() {
   const [walletInfo, setWalletInfo] = useState({
@@ -47,44 +48,44 @@ export default function Dashboard() {
 
   return (
     <AdminLayout>
-      <div className="dashboard-container">
-        <h1 className="dashboard-title">Admin Dashboard</h1>
+      <div className={styles.dashboard}>
+        <h1 className={styles.dashboardTitle}>Admin Dashboard</h1>
 
         {/* Wallet Section */}
-        <section className="dashboard-section">
-          <h2 className="section-title">
-            <FaWallet className="section-icon" /> Admin Wallet
+        <section className={styles.dashboardSection}>
+          <h2 className={styles.sectionTitle}>
+            <FaWallet className={styles.sectionIcon} /> Admin Wallet
           </h2>
-          <div className="info-grid">
-            <div className="info-card">
+          <div className={styles.infoGrid}>
+            <div className={styles.infoCard}>
               <h3>Wallet Address</h3>
               <p>{walletInfo.address}</p>
-              <button onClick={() => navigator.clipboard.writeText(walletInfo.address)} className="copy-button">
+              <button onClick={() => navigator.clipboard.writeText(walletInfo.address)} className={styles.copyButton}>
                 Copy Address
               </button>
             </div>
-            <div className="info-card">
+            <div className={styles.infoCard}>
               <h3>Balance</h3>
               <p>{walletInfo.balance} ETH</p>
-              <p className="subtitle">Network: {walletInfo.networkName}</p>
+              <p className={styles.subtitle}>Network: {walletInfo.networkName}</p>
             </div>
           </div>
         </section>
 
         {/* API Keys Section */}
-        <section className="dashboard-section">
-          <h2 className="section-title">
-            <FaKey className="section-icon" /> API Keys & Configuration
+        <section className={styles.dashboardSection}>
+          <h2 className={styles.sectionTitle}>
+            <FaKey className={styles.sectionIcon} /> API Keys & Configuration
           </h2>
-          <div className="info-grid">
-            <div className="info-card">
+          <div className={styles.infoGrid}>
+            <div className={styles.infoCard}>
               <h3>Infura API Key</h3>
-              <p className="api-key">{apiKeys.infuraKey}</p>
-              <button onClick={() => navigator.clipboard.writeText(apiKeys.infuraKey)} className="copy-button">
+              <p className={styles.apiKey}>{apiKeys.infuraKey}</p>
+              <button onClick={() => navigator.clipboard.writeText(apiKeys.infuraKey)} className={styles.copyButton}>
                 Copy Key
               </button>
             </div>
-            <div className="info-card">
+            <div className={styles.infoCard}>
               <h3>Network Configuration</h3>
               <p>Chain ID: {apiKeys.chainId}</p>
               <p>Network: {apiKeys.networkName}</p>
@@ -93,20 +94,20 @@ export default function Dashboard() {
         </section>
 
         {/* Income Section */}
-        <section className="dashboard-section">
-          <h2 className="section-title">
-            <FaChartLine className="section-icon" /> Admin Income
+        <section className={styles.dashboardSection}>
+          <h2 className={styles.sectionTitle}>
+            <FaChartLine className={styles.sectionIcon} /> Admin Income
           </h2>
-          <div className="info-grid">
-            <div className="info-card">
+          <div className={styles.infoGrid}>
+            <div className={styles.infoCard}>
               <h3>Total Income</h3>
               <p>{income.total} ETH</p>
             </div>
-            <div className="info-card">
-              <h3>Today's Income</h3>
+            <div className={styles.infoCard}>
+              <h3>Today&apos;s Income</h3>
               <p>{income.today} ETH</p>
             </div>
-            <div className="info-card">
+            <div className={styles.infoCard}>
               <h3>This Month</h3>
               <p>{income.thisMonth} ETH</p>
             </div>
@@ -114,12 +115,12 @@ export default function Dashboard() {
         </section>
 
         {/* Quick Tutorial */}
-        <section className="dashboard-section">
-          <h2 className="section-title">
-            <FaBook className="section-icon" /> Quick Tutorial
+        <section className={styles.dashboardSection}>
+          <h2 className={styles.sectionTitle}>
+            <FaBook className={styles.sectionIcon} /> Quick Tutorial
           </h2>
-          <div className="tutorial-steps">
-            <div className="step">
+          <div className={styles.tutorialSteps}>
+            <div className={styles.step}>
               <h3>1. Wallet Setup</h3>
               <p>Your admin wallet is configured to receive platform fees and manage NFT contracts.</p>
               <ul>
@@ -128,7 +129,7 @@ export default function Dashboard() {
                 <li>Use only for admin transactions</li>
               </ul>
             </div>
-            <div className="step">
+            <div className={styles.step}>
               <h3>2. API Configuration</h3>
               <p>The platform uses several APIs for blockchain interaction:</p>
               <ul>
@@ -137,7 +138,7 @@ export default function Dashboard() {
                 <li>IPFS: For NFT metadata storage</li>
               </ul>
             </div>
-            <div className="step">
+            <div className={styles.step}>
               <h3>3. Income Tracking</h3>
               <p>Platform fees are automatically collected from:</p>
               <ul>

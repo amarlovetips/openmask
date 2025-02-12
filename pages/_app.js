@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AdminAuthProvider } from '../context/AdminAuthContext';
 import { WebsiteProvider } from '../context/WebsiteContext';
 import { WalletProvider } from '../context/WalletContext';
+import { ChakraProvider } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 
 // Import styles
@@ -24,16 +25,18 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <AdminAuthProvider>
-      <WebsiteProvider>
-        <WalletProvider>
-          <div className="App">
-            <Navbar />
-            <Component {...pageProps} />
-          </div>
-        </WalletProvider>
-      </WebsiteProvider>
-    </AdminAuthProvider>
+    <ChakraProvider>
+      <AdminAuthProvider>
+        <WebsiteProvider>
+          <WalletProvider>
+            <div className="App">
+              <Navbar />
+              <Component {...pageProps} />
+            </div>
+          </WalletProvider>
+        </WebsiteProvider>
+      </AdminAuthProvider>
+    </ChakraProvider>
   );
 }
 

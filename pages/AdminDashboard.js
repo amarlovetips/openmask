@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { mockNFTs } from '../data/mockNFTs';
-import './AdminDashboard.css';
+import styles from '../styles/components/AdminDashboard.module.css';
 
 function AdminDashboard({ section = 'dashboard' }) {
   const [nfts] = useState(mockNFTs);

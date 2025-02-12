@@ -1,13 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
-
-const AdminLayout = dynamic(() => import('../../components/AdminLayout'), {
-  ssr: false
-});
-const AdminHome = dynamic(() => import('../../components/AdminHome'), {
-  ssr: false
-});
+import AdminLayout from '../../components/AdminLayout';
+import AdminHome from '../../components/AdminHome';
 
 export default function AdminPage() {
   const router = useRouter();

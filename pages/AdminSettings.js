@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useWallet } from '../context/WalletContext';
-import './AdminSettings.css';
+import styles from '../styles/components/AdminSettings.module.css';
+import Image from 'next/image';
 
 function AdminSettings() {
   const [logo, setLogo] = useState(null);
@@ -37,7 +38,13 @@ function AdminSettings() {
         <h2>Logo Settings</h2>
         <form onSubmit={handleSubmit} className="logo-form">
           <div className="logo-preview">
-            {previewUrl && <img src={previewUrl} alt="Logo preview" />}
+            {previewUrl && <Image 
+              src={previewUrl}
+              alt="Logo preview"
+              width={200}
+              height={200}
+              priority={true}
+            />}
           </div>
           
           <div className="form-group">

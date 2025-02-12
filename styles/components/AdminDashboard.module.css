@@ -1,0 +1,116 @@
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboardTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.dashboardSection {
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.sectionIcon {
+  color: #059669;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.infoCard {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.infoCard h3 {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.infoCard p {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.subtitle {
+  font-size: 0.9rem !important;
+  color: #666 !important;
+  font-weight: normal !important;
+  margin-top: 0.5rem;
+}
+
+.apiKey {
+  font-family: monospace;
+  background: #eee;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.copyButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #059669;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.copyButton:hover {
+  background: #047857;
+}
+
+.tutorialSteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.step {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.step h3 {
+  color: #059669;
+  margin-bottom: 1rem;
+}
+
+.step ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.step li {
+  margin-bottom: 0.5rem;
+  color: #666;
+} 

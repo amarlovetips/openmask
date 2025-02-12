@@ -1,4 +1,4 @@
-import './Create.css';
+import styles from '../styles/components/Create.module.css';
 
 function Create() {
   return (

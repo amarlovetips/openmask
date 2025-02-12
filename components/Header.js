@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import Image from 'next/image';
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -67,7 +68,13 @@ export default function Header() {
           {/* Left Section */}
           <div className="flex items-center space-x-8">
             <Link href="/">
-              <img src="/logo.png" alt="OpenMask Logo" className="h-8" />
+              <Image 
+                src="/logo.png"
+                alt="OpenMask Logo"
+                width={32}
+                height={32}
+                priority={true}
+              />
             </Link>
             <nav className="hidden md:flex space-x-4">
               <Link href="/collections" className="text-gray-700 hover:text-gray-900">Collections</Link>
@@ -95,7 +102,13 @@ export default function Header() {
                   onMouseEnter={() => setShowWalletMenu(true)}
                   onMouseLeave={() => setShowWalletMenu(false)}
                 >
-                  <img src="/wallet-icon.png" alt="Wallet" className="h-6" />
+                  <Image 
+                    src="/wallet-icon.png"
+                    alt="Wallet"
+                    width={24}
+                    height={24}
+                    priority={true}
+                  />
                   {showWalletMenu && (
                     <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
                       <div className="p-4">
@@ -113,7 +126,13 @@ export default function Header() {
                   onMouseEnter={() => setShowProfileMenu(true)}
                   onMouseLeave={() => setShowProfileMenu(false)}
                 >
-                  <img src="/profile.png" alt="Profile" className="h-8 rounded-full" />
+                  <Image 
+                    src="/profile.png"
+                    alt="Profile"
+                    width={32}
+                    height={32}
+                    className="rounded-full"
+                  />
                   {showProfileMenu && (
                     <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
                       <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</Link>

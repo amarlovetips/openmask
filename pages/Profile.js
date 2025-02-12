@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { mockNFTs } from '../data/mockNFTs';
-import './Profile.css';
+import styles from '../styles/components/Profile.module.css';
+import Image from 'next/image';
 
 function Profile() {
   const [activeTab, setActiveTab] = useState('collected');
@@ -18,11 +19,18 @@ function Profile() {
   };
 
   return (
-    <div className="profile">
-      <div className="profile-header">
-        <div className="profile-info">
-          <img src={userProfile.avatar} alt="Profile" className="profile-avatar" />
-          <div className="profile-details">
+    <div className={styles.profile}>
+      <div className={styles.profileHeader}>
+        <div className={styles.profileInfo}>
+          <Image 
+            src={userProfile.avatar}
+            alt="Profile"
+            width={150}
+            height={150}
+            className={styles.profileImage}
+            priority={true}
+          />
+          <div className={styles.profileDetails}>
             <h1>{userProfile.username}</h1>
             <p className="address">{userProfile.address}</p>
             <p className="bio">{userProfile.bio}</p>
@@ -45,47 +53,24 @@ function Profile() {
         <button className="edit-profile-btn">Edit Profile</button>
       </div>
 
-      <div className="profile-content">
-        <div className="profile-tabs">
-          <button 
-            className={activeTab === 'collected' ? 'active' : ''} 
-            onClick={() => setActiveTab('collected')}
-          >
-            Collected
-          </button>
-          <button 
-            className={activeTab === 'created' ? 'active' : ''} 
-            onClick={() => setActiveTab('created')}
-          >
-            Created
-          </button>
-          <button 
-            className={activeTab === 'favorited' ? 'active' : ''} 
-            onClick={() => setActiveTab('favorited')}
-          >
-            Favorited
-          </button>
-          <button 
-            className={activeTab === 'activity' ? 'active' : ''} 
-            onClick={() => setActiveTab('activity')}
-          >
-            Activity
-          </button>
-        </div>
-
-        <div className="nft-grid">
-          {nfts.map((nft) => (
-            <div key={nft.id} className="nft-card">
-              <img src={nft.image} alt={nft.title} />
-              <div className="nft-info">
-                <h3>{nft.title}</h3>
-                <p>{nft.description}</p>
-                <div className="price">{nft.price}</div>
-                <button className="list-btn">List for Sale</button>
-              </div>
+      <div className={styles.nftGrid}>
+        {nfts.map((nft) => (
+          <div key={nft.id} className={styles.nftCard}>
+            <Image 
+              src={nft.image}
+              alt={nft.title}
+              width={250}
+              height={250}
+              priority={true}
+            />
+            <div className="nft-info">
+              <h3>{nft.title}</h3>
+              <p>{nft.description}</p>
+              <div className="price">{nft.price}</div>
+              <button className="list-btn">List for Sale</button>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

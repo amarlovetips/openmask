@@ -2,34 +2,37 @@
   "name": "openmask",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.10.5",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "@web3-react/core": "^8.2.3",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.13",
     "dotenv": "^16.4.7",
-    "ethers": "^6.13.5",
+    "ethers": "^6.9.0",
     "framer-motion": "^11.18.2",
-    "next": "14.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^5.4.0",
-    "react-router-dom": "^6.29.0"
+    "next": "^14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.42",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^14.0.4",
     "autoprefixer": "^10.4.20",
-    "hardhat": "^2.22.18",
     "postcss": "^8.5.1"
   },
   "eslintConfig": {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AdminHome.css';
+import styles from '../styles/components/AdminHome.module.css';
 
 function AdminHome() {
   const [systemInfo] = useState({

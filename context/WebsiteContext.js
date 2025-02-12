@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { config } from '../utils/config';
 
 const WebsiteContext = createContext();
 
 export function WebsiteProvider({ children }) {
   const [websiteSettings, setWebsiteSettings] = useState({
-    logo: '/assets/images/default-logo.png',
+    logo: `${config.websiteUrl}/assets/images/default-logo.png`,
     title: 'OpenMask',
     description: 'NFT Marketplace',
     theme: 'light'

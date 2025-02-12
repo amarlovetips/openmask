@@ -1,69 +1,36 @@
-# NFT Marketplace Admin Panel
+# OpenMask NFT Marketplace
 
-A secure and feature-rich admin panel for managing an NFT marketplace.
+## Getting Started
 
-## Features
+First, run the development server:
 
-- Secure admin authentication
-- Real-time statistics dashboard
-- NFT management
-- User management
-- Website settings
-- Menu configuration
-
-## Setup
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-```
-
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Create environment files:
-```bash
-cp .env.example .env.local
-```
-
-4. Update the environment variables in `.env.local` with your values.
-
-5. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 ## Environment Variables
 
-Create a `.env.local` file with the following variables:
+Create a `.env.local` file with:
 
 ```env
-# Public environment variables
-NEXT_PUBLIC_INFURA_ID=your_infura_id
-NEXT_PUBLIC_CHAIN_ID=11155111
-NEXT_PUBLIC_NETWORK_NAME=Sepolia
-NEXT_PUBLIC_WS_ENDPOINT=wss://your-websocket-endpoint.com
-
-# Admin Authentication
+# Admin Credentials
 ADMIN_USERNAME=your_admin_username
 ADMIN_PASSWORD=your_admin_password
 JWT_SECRET=your_jwt_secret
+
+# Public variables
+NEXT_PUBLIC_INFURA_ID=your_infura_id
+NEXT_PUBLIC_CHAIN_ID=11155111
+NEXT_PUBLIC_NETWORK_NAME=Sepolia
 ```
 
-## Security
+## Deployment
 
-- Never commit `.env.local` or any other files containing sensitive information
-- Keep your admin credentials secure
-- Regularly update your JWT_SECRET
-- Use strong passwords
-
-## License
-
-MIT
+1. Push your code to GitHub
+2. Import your repository in Vercel
+3. Add environment variables in Vercel project settings
+4. Deploy!

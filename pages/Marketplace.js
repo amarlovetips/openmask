@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { mockNFTs } from '../data/mockNFTs';
-import './Marketplace.css';
+import styles from '../styles/components/Marketplace.module.css';
+import Image from 'next/image';
 
 function Marketplace() {
   const [nfts] = useState(mockNFTs);
@@ -26,7 +27,13 @@ function Marketplace() {
       <div className="nft-grid">
         {nfts.map((nft) => (
           <div key={nft.id} className="nft-card">
-            <img src={nft.image} alt={nft.title} />
+            <Image 
+              src={nft.image}
+              alt={nft.title}
+              width={300}
+              height={300}
+              priority={true}
+            />
             <div className="nft-info">
               <h3>{nft.title}</h3>
               <p>{nft.description}</p>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './WalletMenuSettings.css';
+import styles from '../styles/components/WalletMenuSettings.module.css';
 
 function WalletMenuSettings() {
   const [menuItems, setMenuItems] = useState(() => {
@@ -90,12 +90,12 @@ function WalletMenuSettings() {
   };
 
   return (
-    <div className="wallet-menu-settings">
+    <div className={styles.container}>
       <h1>Wallet Menu Settings</h1>
 
-      <div className="settings-section">
+      <div className={styles.settingsSection}>
         <h2>Menu Items</h2>
-        <form onSubmit={handleAddMenuItem} className="add-form">
+        <form onSubmit={handleAddMenuItem} className={styles.addForm}>
           <input
             type="text"
             placeholder="Menu Title"
@@ -120,22 +120,22 @@ function WalletMenuSettings() {
           <button type="submit">Add Menu Item</button>
         </form>
 
-        <div className="items-list">
+        <div className={styles.itemsList}>
           {menuItems.map(item => (
-            <div key={item.id} className={`list-item ${!item.isActive ? 'inactive' : ''}`}>
-              <div className="item-info">
-                <span className="item-icon">{item.icon}</span>
-                <span className="item-title">{item.title}</span>
-                <span className="item-path">{item.path}</span>
+            <div key={item.id} className={`${styles.listItem} ${!item.isActive ? styles.inactive : ''}`}>
+              <div className={styles.itemInfo}>
+                <span className={styles.itemIcon}>{item.icon}</span>
+                <span className={styles.itemTitle}>{item.title}</span>
+                <span className={styles.itemPath}>{item.path}</span>
               </div>
-              <div className="item-actions">
+              <div className={styles.itemActions}>
                 <button 
                   onClick={() => handleToggleMenuItem(item.id)}
-                  className={item.isActive ? 'deactivate' : 'activate'}
+                  className={item.isActive ? styles.deactivate : styles.activate}
                 >
                   {item.isActive ? 'Deactivate' : 'Activate'}
                 </button>
-                <button onClick={() => handleDeleteMenuItem(item.id)} className="delete">
+                <button onClick={() => handleDeleteMenuItem(item.id)} className={styles.delete}>
                   Delete
                 </button>
               </div>
@@ -144,9 +144,9 @@ function WalletMenuSettings() {
         </div>
       </div>
 
-      <div className="settings-section">
+      <div className={styles.settingsSection}>
         <h2>WETH Contracts</h2>
-        <form onSubmit={handleAddContract} className="add-form">
+        <form onSubmit={handleAddContract} className={styles.addForm}>
           <input
             type="text"
             placeholder="Chain ID"
@@ -171,22 +171,22 @@ function WalletMenuSettings() {
           <button type="submit">Add Contract</button>
         </form>
 
-        <div className="items-list">
+        <div className={styles.itemsList}>
           {Object.entries(wethContracts).map(([chainId, contract]) => (
-            <div key={chainId} className={`list-item ${!contract.isActive ? 'inactive' : ''}`}>
-              <div className="item-info">
-                <span className="item-title">{contract.name}</span>
-                <span className="item-path">{contract.address}</span>
-                <span className="chain-id">Chain ID: {chainId}</span>
+            <div key={chainId} className={`${styles.listItem} ${!contract.isActive ? styles.inactive : ''}`}>
+              <div className={styles.itemInfo}>
+                <span className={styles.itemTitle}>{contract.name}</span>
+                <span className={styles.itemPath}>{contract.address}</span>
+                <span className={styles.chainId}>Chain ID: {chainId}</span>
               </div>
-              <div className="item-actions">
+              <div className={styles.itemActions}>
                 <button 
                   onClick={() => handleToggleContract(chainId)}
-                  className={contract.isActive ? 'deactivate' : 'activate'}
+                  className={contract.isActive ? styles.deactivate : styles.activate}
                 >
                   {contract.isActive ? 'Deactivate' : 'Activate'}
                 </button>
-                <button onClick={() => handleDeleteContract(chainId)} className="delete">
+                <button onClick={() => handleDeleteContract(chainId)} className={styles.delete}>
                   Delete
                 </button>
               </div>

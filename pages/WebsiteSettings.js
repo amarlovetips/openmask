@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useWebsite } from '../context/WebsiteContext';
-import './WebsiteSettings.css';
+import styles from '../styles/components/WebsiteSettings.module.css';
+import Image from 'next/image';
 
 function WebsiteSettings() {
   const { websiteSettings, updateLogo, updateSettings } = useWebsite();
@@ -81,14 +82,14 @@ function WebsiteSettings() {
   };
 
   return (
-    <div className="website-settings">
+    <div className={styles.websiteSettings}>
       <h1>Website Settings</h1>
       
       <form onSubmit={handleSubmit}>
-        <div className="settings-section">
+        <div className={styles.settingsSection}>
           <h2>General Settings</h2>
           
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Site Name</label>
             <input
               type="text"
@@ -98,7 +99,7 @@ function WebsiteSettings() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Site Description</label>
             <textarea
               name="description"
@@ -107,7 +108,7 @@ function WebsiteSettings() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Contact Email</label>
             <input
               type="email"
@@ -118,48 +119,60 @@ function WebsiteSettings() {
           </div>
         </div>
 
-        <div className="settings-section">
+        <div className={styles.settingsSection}>
           <h2>Logo Settings</h2>
           
-          <div className="logo-section">
+          <div className={styles.logoSection}>
             <h3>Desktop Logo</h3>
-            <div className="logo-preview">
-              {previewUrl && <img src={previewUrl} alt="Desktop logo preview" />}
+            <div className={styles.logoPreview}>
+              {previewUrl && <Image 
+                src={previewUrl}
+                alt="Desktop logo preview"
+                width={100}
+                height={100}
+                priority={true}
+              />}
             </div>
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label>Upload Desktop Logo</label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleLogoChange(e, false)}
-                className="file-input"
+                className={styles.fileInput}
               />
             </div>
           </div>
 
-          <div className="logo-section">
+          <div className={styles.logoSection}>
             <h3>Mobile Logo</h3>
-            <div className="logo-preview mobile">
-              {mobilePreviewUrl && <img src={mobilePreviewUrl} alt="Mobile logo preview" />}
+            <div className={styles.logoPreview + ' ' + styles.mobile}>
+              {mobilePreviewUrl && <Image 
+                src={mobilePreviewUrl}
+                alt="Mobile logo preview"
+                width={100}
+                height={100}
+                priority={true}
+              />}
             </div>
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label>Upload Mobile Logo</label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleLogoChange(e, true)}
-                className="file-input"
+                className={styles.fileInput}
               />
             </div>
           </div>
         </div>
 
-        <div className="settings-section">
+        <div className={styles.settingsSection}>
           <h2>Theme Settings</h2>
           
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Primary Color</label>
-            <div className="color-input-wrapper">
+            <div className={styles.colorInputWrapper}>
               <input
                 type="color"
                 name="primaryColor"
@@ -175,9 +188,9 @@ function WebsiteSettings() {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Secondary Color</label>
-            <div className="color-input-wrapper">
+            <div className={styles.colorInputWrapper}>
               <input
                 type="color"
                 name="secondaryColor"
@@ -194,10 +207,10 @@ function WebsiteSettings() {
           </div>
         </div>
 
-        <div className="settings-section">
+        <div className={styles.settingsSection}>
           <h2>Social Media Links</h2>
           
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Twitter URL</label>
             <input
               type="url"
@@ -208,7 +221,7 @@ function WebsiteSettings() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Discord URL</label>
             <input
               type="url"
@@ -219,7 +232,7 @@ function WebsiteSettings() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Telegram URL</label>
             <input
               type="url"
@@ -231,7 +244,7 @@ function WebsiteSettings() {
           </div>
         </div>
 
-        <button type="submit" className="save-btn">
+        <button type="submit" className={styles.saveBtn}>
           Save Changes
         </button>
       </form>
