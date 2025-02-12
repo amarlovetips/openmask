@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../../styles/components/AdminHome.module.css';
+import styles from '@/styles/components/AdminHome.module.css';
 
 export default function AdminHome() {
   const [systemInfo] = useState({

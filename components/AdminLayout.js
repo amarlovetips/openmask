@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import styles from '../styles/components/AdminLayout.module.css';
+import styles from '@/styles/components/AdminLayout.module.css';
 
 export default function AdminLayout({ children }) {
   const router = useRouter();
