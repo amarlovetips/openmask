@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { config } from '../utils/config';
+import { config } from '@/utils/config';
 
 const WebsiteContext = createContext();
 

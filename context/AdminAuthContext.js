@@ -5,11 +5,17 @@ const AdminAuthContext = createContext();
 
 export function AdminAuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     // Check cookie on mount
-    setIsAuthenticated(document.cookie.includes('adminSession=true'));
+    const checkAuth = () => {
+      const isAuth = document.cookie.includes('adminSession=true');
+      setIsAuthenticated(isAuth);
+      setIsLoading(false);
+    };
+    checkAuth();
   }, []);
 
   const login = async (username, password) => {
@@ -23,7 +29,6 @@ export function AdminAuthProvider({ children }) {
       const data = await res.json();
       if (data.success) {
         setIsAuthenticated(true);
-        router.push('/joynobiadmin');
         return true;
       }
       return false;
@@ -39,6 +44,10 @@ export function AdminAuthProvider({ children }) {
     setIsAuthenticated(false);
     router.push('/joynobiadmin/login');
   };
+
+  if (isLoading) {
+    return null; // or a loading spinner
+  }
 
   return (
     <AdminAuthContext.Provider value={{ isAuthenticated, login, logout }}>

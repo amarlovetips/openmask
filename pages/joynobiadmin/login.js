@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useAdminAuth } from '../../context/AdminAuthContext';
-import styles from '../../styles/components/AdminLogin.module.css';
+import { useAdminAuth } from '@/context/AdminAuthContext';
+import styles from '@/styles/components/AdminLogin.module.css';
 
 export default function AdminLogin() {
   const [username, setUsername] = useState('');
@@ -9,7 +9,14 @@ export default function AdminLogin() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { setIsAuthenticated } = useAdminAuth();
+  const { login, isAuthenticated } = useAdminAuth();
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/joynobiadmin');
+    }
+  }, [isAuthenticated, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,11 +24,8 @@ export default function AdminLogin() {
     setIsLoading(true);
 
     try {
-      // Simple local authentication
-      if (username === process.env.NEXT_PUBLIC_ADMIN_USERNAME && 
-          password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
-        localStorage.setItem('adminToken', 'authenticated');
-        setIsAuthenticated(true);
+      const success = await login(username, password);
+      if (success) {
         router.push('/joynobiadmin');
       } else {
         setError('Invalid credentials');
@@ -34,8 +38,8 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className={styles.adminLogin}>
-      <div className={styles.loginContainer}>
+    <div className={styles.loginContainer}>
+      <div className={styles.loginBox}>
         <h1 className={styles.loginTitle}>Admin Login</h1>
         
         <form onSubmit={handleSubmit} className={styles.loginForm}>
@@ -46,7 +50,6 @@ export default function AdminLogin() {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className={styles.formInput}
               required
               disabled={isLoading}
             />
@@ -59,13 +62,12 @@ export default function AdminLogin() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={styles.formInput}
               required
               disabled={isLoading}
             />
           </div>
 
-          {error && <p className={styles.errorMessage}>{error}</p>}
+          {error && <p className={styles.error}>{error}</p>}
 
           <button 
             type="submit" 

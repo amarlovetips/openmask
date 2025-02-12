@@ -1,17 +1,22 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { useAdminAuth } from '@/context/AdminAuthContext';
 import styles from '@/styles/components/AdminLayout.module.css';
 
 export default function AdminLayout({ children }) {
   const router = useRouter();
+  const { isAuthenticated } = useAdminAuth();
 
   useEffect(() => {
-    const isAuthenticated = document.cookie.includes('adminSession=true');
     if (!isAuthenticated) {
       router.push('/joynobiadmin/login');
     }
-  }, [router]);
+  }, [isAuthenticated, router]);
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <div className={styles.adminLayout}>

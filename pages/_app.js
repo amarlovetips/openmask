@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { AdminAuthProvider } from '../context/AdminAuthContext';
-import { WebsiteProvider } from '../context/WebsiteContext';
+import { AdminAuthProvider } from '@/context/AdminAuthContext';
+import { WebsiteProvider } from '@/context/WebsiteContext';
 import { WalletProvider } from '../context/WalletContext';
 import { ChakraProvider } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
