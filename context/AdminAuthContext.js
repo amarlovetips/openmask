@@ -23,6 +23,7 @@ export function AdminAuthProvider({ children }) {
       const data = await res.json();
       if (data.success) {
         setIsAuthenticated(true);
+        router.push('/joynobiadmin');
         return true;
       }
       return false;

@@ -2,13 +2,12 @@ import { NextResponse } from 'next/server';
 
 // Simple middleware for admin routes protection
 export function middleware(request) {
-  // Protect admin routes except login
+  // Only check admin routes
   if (request.nextUrl.pathname.startsWith('/joynobiadmin') && 
       !request.nextUrl.pathname.includes('/login')) {
     
-    // Check for admin session
     const session = request.cookies.get('adminSession');
-    if (!session || session.value !== 'true') {
+    if (!session) {
       return NextResponse.redirect(new URL('/joynobiadmin/login', request.url));
     }
   }

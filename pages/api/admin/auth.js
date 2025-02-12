@@ -1,5 +1,3 @@
-import { serialize } from 'cookie';
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -12,7 +10,14 @@ export default async function handler(req, res) {
         password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       
       // Set simple cookie
-      res.setHeader('Set-Cookie', 'adminSession=true; Path=/; HttpOnly; SameSite=Strict');
+      res.setHeader('Set-Cookie', [
+        `adminSession=true`,
+        `Path=/`,
+        `HttpOnly`,
+        `SameSite=Strict`,
+        process.env.NODE_ENV === 'production' ? `Secure` : ''
+      ].filter(Boolean).join('; '));
+
       return res.status(200).json({ success: true });
     }
 

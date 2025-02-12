@@ -11,14 +11,11 @@ export default function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  try {
-    if (!req.cookies.adminSession) {
-      return res.status(401).json({ message: 'Unauthorized' });
-    }
-
-    return res.status(200).json(mockStats);
-  } catch (error) {
-    console.error('Stats error:', error);
-    return res.status(500).json({ message: 'Error fetching stats' });
+  // Simple session check
+  const session = req.cookies.adminSession;
+  if (!session) {
+    return res.status(401).json({ message: 'Unauthorized' });
   }
+
+  return res.status(200).json(mockStats);
 } 

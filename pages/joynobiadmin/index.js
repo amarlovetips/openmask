@@ -7,7 +7,7 @@ export default function AdminPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem('adminToken');
+    const isAuthenticated = document.cookie.includes('adminSession=true');
     if (!isAuthenticated) {
       router.push('/joynobiadmin/login');
     }
