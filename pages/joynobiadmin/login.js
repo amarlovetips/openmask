@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useAdminAuth } from '../../context/AdminAuthContext';
+import styles from '../../styles/components/AdminLogin.module.css';
 
 export default function AdminLogin() {
   const [username, setUsername] = useState('');
@@ -33,42 +34,42 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="admin-login">
-      <div className="login-container">
-        <h1 className="login-title">Admin Login</h1>
+    <div className={styles.adminLogin}>
+      <div className={styles.loginContainer}>
+        <h1 className={styles.loginTitle}>Admin Login</h1>
         
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group">
+        <form onSubmit={handleSubmit} className={styles.loginForm}>
+          <div className={styles.formGroup}>
             <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="form-input"
+              className={styles.formInput}
               required
               disabled={isLoading}
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="form-input"
+              className={styles.formInput}
               required
               disabled={isLoading}
             />
           </div>
 
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className={styles.errorMessage}>{error}</p>}
 
           <button 
             type="submit" 
-            className="login-button"
+            className={styles.loginButton}
             disabled={isLoading}
           >
             {isLoading ? 'Logging in...' : 'Login'}

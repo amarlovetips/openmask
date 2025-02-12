@@ -1,7 +1,6 @@
 import { statsService } from '../../../services/StatsService';
-import { adminAuthMiddleware } from '../../../middleware/adminAuth';
 
-async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
@@ -13,6 +12,4 @@ async function handler(req, res) {
     console.error('Error fetching stats:', error);
     res.status(500).json({ message: 'Error fetching stats' });
   }
-}
-
-export default adminAuthMiddleware(handler); 
+} 

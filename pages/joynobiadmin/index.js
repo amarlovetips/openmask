@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import AdminLayout from '../../components/AdminLayout';
-import AdminHome from '../../components/AdminHome';
+import AdminHome from './home';
 
 export default function AdminPage() {
   const router = useRouter();
